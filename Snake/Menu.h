@@ -16,6 +16,7 @@ class Menu
     static constexpr possiblePos EXIT = { 8,22 };
     static constexpr possiblePos positions[] = { PLAY, OPTIONS, INSTRUCTIONS, EXIT };
 
+	//Data Members
     bool chosen = false;
     bool isArrow = false;
     char menuChar = '\0';
@@ -65,5 +66,4 @@ public:
 
     //Getters
     bool GetMenuChoice() const { return chosen; }
-
 };

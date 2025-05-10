@@ -1,3 +1,5 @@
+#include <iostream>
+#include <windows.h>
 #include <conio.h>
 #include "Menu.h"
 #include "HelperFunc.h"
@@ -65,6 +67,7 @@ void Menu::MoveArrow(char numKey) {
     std::cout << arrow;
 }
 
+//This function erases all arrows in the menu
 void Menu::resetAllArrows() {
     for (int i = 0; i < (sizeof(positions) / sizeof(positions[0])); i++)
     {

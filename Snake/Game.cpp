@@ -8,6 +8,7 @@
 #include "Apple.h"
 #include "HelperFunc.h"
 
+//This function manages the main game loop, handles transitions between different game states, and coordinates user inputs and game actions
 void Game::run() {
 	menu.print();
 	char pressedKey = '\0';
@@ -90,6 +91,7 @@ void Game::run() {
 	}
 }
 
+//This function displays the appropriate screen (instructions, options, colors) based on the current game state
 void Game::printScreens() {
 
 	switch (State)
@@ -141,6 +143,7 @@ void Game::printScreens() {
 	}
 }
 
+//This function processes user inputs and updates the game state accordingly during non-gameplay states
 void Game::handleState() {
 
 	static DWORD messageTimestamp = 0;
@@ -259,6 +262,7 @@ void Game::handleState() {
 
 }
 
+//This function initiates the gameplay, manages the snake movement, collision checks, and apple interactions
 void Game::playGame() {
 
 	COORD applePos = apple.getPosition();
@@ -330,6 +334,7 @@ void Game::playGame() {
 	Sleep(difficultylevel == HARD ? 50 : 150);
 }
 
+//This function handles the game over logic, displays the game over screen, plays the lose sound, and resets the game state for a new game session
 void Game::gameOverLogic() {
 	Sleep(200);
 
@@ -342,6 +347,7 @@ void Game::gameOverLogic() {
 	gameReset();
 }
 
+//This function handles the game won logic, displays the game won screen, plays the win sound, and resets the game state for a new game session
 void Game::gameWonLogic() {
 	clearScr();
 	std::cout << gameWonScreen; //Print the winning screen
@@ -352,6 +358,7 @@ void Game::gameWonLogic() {
 	gameReset();
 }
 
+//This function resets all game components to their initial state, preparing the game for a new session
 void Game::gameReset() {
 	clearScr();
 	State = GameState::Standby;
@@ -365,7 +372,7 @@ void Game::gameReset() {
 	menu.resetAllArrows();
 }
 
-//This function plays a short sound effect for exiting the game using the Beep function
+//This function plays a short sound effect sequence when the player exits the game using the Beep function
 void Game::playExitSound() const {
 	Beep(1000, 100); // E5
 	Beep(800, 100);  // D5
@@ -373,7 +380,7 @@ void Game::playExitSound() const {
 	Beep(400, 200);  // A4
 }
 
-//This function plays a short lose sound effect in 8-bit sound when the player loses the game, using the Beep function
+//This function plays a short sound effect sequence when the player loses the game using the Beep function
 void Game::playLoseSound() const {
 	Beep(1046, 100);  // C6
 	Beep(784, 100);   // G5
@@ -383,7 +390,7 @@ void Game::playLoseSound() const {
 	Beep(440, 300);   // A4
 }
 
-//This function plays a short victory sound effect in 8-bit sound when the player wins the game, using the Beep function
+//This function plays a short sound effect sequence when the player wins the game using the Beep function
 void Game::playWinSound() const {
 	Beep(784, 200);  // G5
 	Beep(880, 200);  // A5
@@ -394,6 +401,7 @@ void Game::playWinSound() const {
 	Beep(1047, 300); // C6
 }
 
+//This function manages the color change interface, allowing the player to update the snake's color by entering a valid color name
 void Game::handleColors() {
 
 	printColorPreview(snake.getColorName());
@@ -513,14 +521,15 @@ void Game::handleColors() {
 	}
 }
 
-void Game::clearInputArea() {
+//This function clears the user input area used for color changes
+void Game::clearInputArea() const {
 
 	gotoxy(20,6);
 	std::cout << std::string(35, ' ');
-
 }
 
-void Game::printColorPreview(std::string colorName) {
+//This function prints a color preview at a designated location on the screen if the specified color name is valid
+void Game::printColorPreview(std::string colorName) const {
 
 	std::map<std::string, const char*> colorMap = {
 		{"white", WHITE_TXT}, {"red", RED_TXT}, {"green", GREEN_TXT},
@@ -542,7 +551,8 @@ void Game::printColorPreview(std::string colorName) {
 	}
 }
 
-bool Game::isValidColor(const std::string& color) {
+//This function returns true if the provided color name is valid and false otherwise
+bool Game::isValidColor(const std::string& color) const {
 	static std::map<std::string, const char*> validColors = {
 		{"white", WHITE}, {"red", RED}, {"green", GREEN},
 		{"yellow", YELLOW}, {"blue", BLUE}, {"purple", PURPLE},
@@ -553,6 +563,7 @@ bool Game::isValidColor(const std::string& color) {
 	return validColors.count(color) > 0;
 }
 
+//This function prints "OK!" in green at the specified screen coordinates with a blinking effect
 void Game::printOKInGreen(int x, int y) const {
 
 	gotoxy(x, y);
