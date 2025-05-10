@@ -5,6 +5,7 @@
 #include "HelperFunc.h"
 #include "Snake.h"
 
+//This function repositions the apple to a random location on the board that does not overlap with the snake's body
 void Apple::reposition(const Snake& snake) {
 
     //Random position
@@ -33,6 +34,7 @@ void Apple::reposition(const Snake& snake) {
     }
 }
 
+//This function returns the current position of the apple as a COORD structure
 COORD Apple::getPosition() const {
     COORD res;
     res.X = static_cast<SHORT>(x);
@@ -40,18 +42,21 @@ COORD Apple::getPosition() const {
     return res;
 }
 
+//This function draws the apple at its current position on the board and on screen using its assigned color
 void Apple::draw(Board& board) const {
     gotoxy(x, y);
     board.setChar(x, y, appleIcon);
     std::cout << color << appleIcon << RESET;
 }
 
+//This function erases the apple from its current position on the board and on screen
 void Apple::erase(Board& board) const {
     gotoxy(x, y);
     board.setChar(x, y, EMPTY_CHAR);
     std::cout << EMPTY_CHAR;
 }
 
+//This function changes the color of the apple to green if the snake is red and changes the color of the apple to red otherwise
 void Apple::changeAppleColor(const Snake& snake) {
 
     color = (snake.getColor() == std::string(RED)) ? GREEN : RED;

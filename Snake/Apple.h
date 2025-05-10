@@ -34,7 +34,7 @@ public:
 	void resetAppleCount() { count = 0; }
 	void increaseAppleCount() { count++; }
 
-	bool checkWinCon() const { return count == max; }
+	bool checkWinCon() const { return count == max-1; }
 
 	static constexpr char getAppleIcon() { return appleIcon; }
 };
