@@ -1,3 +1,5 @@
+#include <iostream>
+#include <windows.h>
 #include "HelperFunc.h"
 
 //This function moves the cursor to a specified position in the console window
@@ -18,6 +20,7 @@ void ShowConsoleCursor(bool showFlag) {
     SetConsoleCursorInfo(out, &cursorInfo);
 }
 
+//This function clears the screen
 void clearScr() {
     system("cls");
 }

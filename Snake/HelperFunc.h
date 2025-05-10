@@ -1,7 +1,4 @@
 #pragma once
-#include <iostream>
-#include <windows.h>
-#include <process.h>
 
 void gotoxy(int x, int y);
 void ShowConsoleCursor(bool showFlag);

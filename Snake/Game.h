@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #pragma comment(lib, "Winmm.lib")
-#include <windows.h>
 #include "Snake.h"
 #include "HelperFunc.h"
 
@@ -16,21 +15,22 @@ class Game
     //Constants
     static constexpr int EASY = 2;
     static constexpr int HARD = 3;
-
     static constexpr bool OFF = false;
     static constexpr bool ON = true;
     
-    //Member variables
+    //Data Members
     char choiceHolder = '\0';
     bool firstPrint = false;
     int difficultylevel = EASY;
     bool music = OFF;
 
+    //References to game objects
     Menu& menu;
     Board& board;
     Snake& snake;
     Apple& apple;
 
+    //Game State Management
     enum class GameState { Standby, Playing, Pause, GameOver, Instructions, Options, Colors, Exit, GameWon };
     GameState State = GameState::Standby;
 
@@ -196,18 +196,20 @@ class Game
 
         //Game Flow & State Management
         void run();
+        void playGame();
         void printScreens();
         void handleState();
         void handleColors();
-        void clearInputArea();
-        void printColorPreview(std::string colorName);
-        bool isValidColor(const std::string& color);
-        void playGame();
-        void printPauseScreen() const { std::cout << pauseScreen; }
-        void terminatePause() { clearScr(); firstPrint = true; }
         void gameOverLogic();
         void gameWonLogic();
         void gameReset();
+        void terminatePause() { clearScr(); firstPrint = true; }
+        void printPauseScreen() const { std::cout << pauseScreen; }
+
+        //Color Input Handling
+        void clearInputArea() const;
+        void printColorPreview(std::string colorName) const;
+        bool isValidColor(const std::string& color) const;
         void printOKInGreen(int x, int y) const;
 
         //Audio FX
