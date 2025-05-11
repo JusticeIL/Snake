@@ -49,6 +49,7 @@ void Snake::resetSnake() {
 
 	resetSnakePos();
 	currentDir = Directions::RIGHT; //Inital the direction again
+	growNextMove = false;
 	isDead = false;
 }
 

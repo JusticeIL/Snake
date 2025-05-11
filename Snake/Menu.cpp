@@ -17,6 +17,7 @@ void Menu::print() const {
 
 //This function handles user input in the menu, updates the selected option, and manages the menu display
 char Menu::handleMenu() {
+
     while (true)
     {
         if (_kbhit())
@@ -46,7 +47,7 @@ char Menu::handleMenu() {
 }
 
 //This function receives a numeric key (as a character), updates the menu arrow position, and prints it
-void Menu::MoveArrow(char numKey) {
+void Menu::MoveArrow(char numKey) const {
 
     resetAllArrows(); //Reset all
     switch (numKey) {
@@ -68,7 +69,8 @@ void Menu::MoveArrow(char numKey) {
 }
 
 //This function erases all arrows in the menu
-void Menu::resetAllArrows() {
+void Menu::resetAllArrows() const {
+
     for (int i = 0; i < (sizeof(positions) / sizeof(positions[0])); i++)
     {
         gotoxy(positions[i].x, positions[i].y);

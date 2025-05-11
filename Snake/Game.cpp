@@ -10,6 +10,7 @@
 
 //This function manages the main game loop, handles transitions between different game states, and coordinates user inputs and game actions
 void Game::run() {
+
 	menu.print();
 	char pressedKey = '\0';
 
@@ -336,6 +337,7 @@ void Game::playGame() {
 
 //This function handles the game over logic, displays the game over screen, plays the lose sound, and resets the game state for a new game session
 void Game::gameOverLogic() {
+
 	Sleep(200);
 
 	clearScr();
@@ -349,6 +351,7 @@ void Game::gameOverLogic() {
 
 //This function handles the game won logic, displays the game won screen, plays the win sound, and resets the game state for a new game session
 void Game::gameWonLogic() {
+
 	clearScr();
 	std::cout << gameWonScreen; //Print the winning screen
 	playWinSound(); //Play win sound
@@ -360,6 +363,7 @@ void Game::gameWonLogic() {
 
 //This function resets all game components to their initial state, preparing the game for a new session
 void Game::gameReset() {
+
 	clearScr();
 	State = GameState::Standby;
 	menu.ResetMenu();
@@ -374,6 +378,7 @@ void Game::gameReset() {
 
 //This function plays a short sound effect sequence when the player exits the game using the Beep function
 void Game::playExitSound() const {
+
 	Beep(1000, 100); // E5
 	Beep(800, 100);  // D5
 	Beep(600, 150);  // C5
@@ -382,6 +387,7 @@ void Game::playExitSound() const {
 
 //This function plays a short sound effect sequence when the player loses the game using the Beep function
 void Game::playLoseSound() const {
+
 	Beep(1046, 100);  // C6
 	Beep(784, 100);   // G5
 	Sleep(60);
@@ -392,6 +398,7 @@ void Game::playLoseSound() const {
 
 //This function plays a short sound effect sequence when the player wins the game using the Beep function
 void Game::playWinSound() const {
+
 	Beep(784, 200);  // G5
 	Beep(880, 200);  // A5
 	Beep(988, 200);  // B5
@@ -553,7 +560,8 @@ void Game::printColorPreview(std::string colorName) const {
 
 //This function returns true if the provided color name is valid and false otherwise
 bool Game::isValidColor(const std::string& color) const {
-	static std::map<std::string, const char*> validColors = {
+
+	const std::map<std::string, const char*> validColors = {
 		{"white", WHITE}, {"red", RED}, {"green", GREEN},
 		{"yellow", YELLOW}, {"blue", BLUE}, {"purple", PURPLE},
 		{"cyan", CYAN}, {"grey", GREY}, {"pink", PINK},

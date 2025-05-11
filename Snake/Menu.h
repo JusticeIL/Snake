@@ -58,8 +58,8 @@ public:
     char handleMenu();
 
     //Menu Navigation
-    void MoveArrow(char numKey);
-    void resetAllArrows();
+    void MoveArrow(char numKey) const;
+    void resetAllArrows() const;
     void ChangeisArrowChoice() { isArrow = true; }
     void ChangeMenuChar(char ch) { menuChar = ch; }
     void ResetMenu() { menuChar = '\0'; chosen = false; }
