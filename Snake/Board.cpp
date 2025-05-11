@@ -6,6 +6,7 @@
 
 //This function prints the current state of the board
 void Board::print() const {
+
 	for (int y = 0; y < HEIGHT-1; y++)
 		std::cout << Level[y] << std::endl;
 
@@ -22,6 +23,7 @@ void Board::setChar(int x, int y, char ch) {
 
 //This function resets the board by clearing all icons
 void Board::resetBoard() {
+
 	std::replace(&Level[0][0], &Level[0][0] + HEIGHT * (WIDTH + 1), Apple::getAppleIcon(), ' ');
 	std::replace(&Level[0][0], &Level[0][0] + HEIGHT * (WIDTH + 1), Snake::getSnakeIcon(), ' ');
 }

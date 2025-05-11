@@ -36,6 +36,7 @@ void Apple::reposition(const Snake& snake) {
 
 //This function returns the current position of the apple as a COORD structure
 COORD Apple::getPosition() const {
+
     COORD res;
     res.X = static_cast<SHORT>(x);
     res.Y = static_cast<SHORT>(y);
@@ -44,6 +45,7 @@ COORD Apple::getPosition() const {
 
 //This function draws the apple at its current position on the board and on screen using its assigned color
 void Apple::draw(Board& board) const {
+
     gotoxy(x, y);
     board.setChar(x, y, appleIcon);
     std::cout << color << appleIcon << RESET;
@@ -51,6 +53,7 @@ void Apple::draw(Board& board) const {
 
 //This function erases the apple from its current position on the board and on screen
 void Apple::erase(Board& board) const {
+
     gotoxy(x, y);
     board.setChar(x, y, EMPTY_CHAR);
     std::cout << EMPTY_CHAR;
