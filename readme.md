@@ -28,7 +28,7 @@ This project is a modern, colorful console-based **Snake Game**, written in C++
 
 2. **Open in Visual Studio**  
    - Open the `sln.` file in Visual Studio
-   - Build and run the solution (by clicking the "green play" button or `Ctrl+Shift+B`)
+   - Build and run the solution (by clicking the "green play" button or `Ctrl+F5`)
 
 > 🔥 **Important:**  
 > The game requires Microsoft Visual Studio.
